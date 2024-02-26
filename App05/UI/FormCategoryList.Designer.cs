@@ -30,14 +30,18 @@
         {
             dataGridView1 = new DataGridView();
             buttonAddCategory = new Button();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(12, 41);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.Size = new Size(791, 296);
             dataGridView1.TabIndex = 0;
             // 
@@ -51,14 +55,25 @@
             buttonAddCategory.UseVisualStyleBackColor = true;
             buttonAddCategory.Click += buttonAddCategory_Click;
             // 
-            // FormCategories
+            // comboBox1
+            // 
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "همه دسته ها", "فعال", "غیر فعال" });
+            comboBox1.Location = new Point(682, 12);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(121, 23);
+            comboBox1.TabIndex = 2;
+            // 
+            // FormCategoryList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(815, 349);
+            Controls.Add(comboBox1);
             Controls.Add(buttonAddCategory);
             Controls.Add(dataGridView1);
-            Name = "FormCategories";
+            Name = "FormCategoryList";
             Text = "FormCategories";
             Load += FormCategories_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -69,5 +84,6 @@
 
         private DataGridView dataGridView1;
         private Button buttonAddCategory;
+        private ComboBox comboBox1;
     }
 }
