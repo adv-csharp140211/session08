@@ -20,27 +20,30 @@ namespace App05.Model
             base.OnModelCreating(modelBuilder);
 
             //Fluent Api // Chaine API
-            modelBuilder.Entity<Category>().Property(x => x.Description)
-                    .HasMaxLength(200)
-                    .IsRequired()
-                    .IsUnicode(false)                    
-                    ;
-            modelBuilder.Entity<Category>().Property(x => x.Name)
-                    .HasMaxLength(100)
-                    .IsRequired()
-                    .IsUnicode(true)
-                    ;
+            //modelBuilder.Entity<Category>().Property(x => x.Description)
+            //        .HasMaxLength(200)
+            //        .IsRequired()
+            //        .IsUnicode(false)                    
+            //        ;
+            //modelBuilder.Entity<Category>().Property(x => x.Name)
+            //        .HasMaxLength(100)
+            //        .IsRequired()
+            //        .IsUnicode(true)
+            //        ;
 
-            modelBuilder.Entity<Product>().Property(x => x.Description)
-                    .HasMaxLength(200)
-                    .IsRequired()
-                    .IsUnicode(false)
-                    ;
-            modelBuilder.Entity<Product>().Property(x => x.Name)
-                    .HasMaxLength(100)
-                    .IsRequired()
-                    .IsUnicode(true)
-                    ;
+            //modelBuilder.Entity<Product>().Property(x => x.Description)
+            //        .HasMaxLength(200)
+            //        .IsRequired()
+            //        .IsUnicode(false)
+            //        ;
+            //modelBuilder.Entity<Product>().Property(x => x.Name)
+            //        .HasMaxLength(100)
+            //        .IsRequired()
+            //        .IsUnicode(true)
+            //        ;
+
+            modelBuilder.ApplyConfiguration(new CategoryConfig()); 
+            modelBuilder.ApplyConfiguration(new ProductConfig());
 
         }
 
