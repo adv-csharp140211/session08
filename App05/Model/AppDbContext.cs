@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -42,8 +43,11 @@ namespace App05.Model
             //        .IsUnicode(true)
             //        ;
 
-            modelBuilder.ApplyConfiguration(new CategoryConfig()); 
-            modelBuilder.ApplyConfiguration(new ProductConfig());
+            //modelBuilder.ApplyConfiguration(new CategoryConfig()); 
+            //modelBuilder.ApplyConfiguration(new ProductConfig());
+
+            //Reflection
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         }
 

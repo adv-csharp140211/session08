@@ -12,7 +12,7 @@ namespace App05.Model
     public class CategoryConfig : IEntityTypeConfiguration<Category>
     {
         public void Configure(EntityTypeBuilder<Category> builder)
-        {
+        {            
             builder.ToTable("Dastebandi", "forosh");
             builder.Property(x => x.Description)
                    .HasMaxLength(200)
