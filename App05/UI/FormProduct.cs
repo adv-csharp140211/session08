@@ -36,6 +36,7 @@ public partial class FormProduct : Form
             CategoryId = ((Category)comboBoxCategory.SelectedItem).Id,
         });
         MessageBox.Show("Done");
+        DialogResult = DialogResult.OK;
         Close();
     }
 }

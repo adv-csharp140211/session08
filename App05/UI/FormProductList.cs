@@ -32,8 +32,10 @@ namespace App05.UI
         private void buttonNew_Click(object sender, EventArgs e)
         {
             var form = new FormProduct();
-            form.ShowDialog();
-            loadData();
+            if(form.ShowDialog() == DialogResult.OK)
+            {
+                loadData();
+            }
         }
     }
 }
