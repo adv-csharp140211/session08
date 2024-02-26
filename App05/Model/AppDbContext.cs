@@ -25,7 +25,23 @@ namespace App05.Model
                     .IsRequired()
                     .IsUnicode(false)                    
                     ;
-            //
+            modelBuilder.Entity<Category>().Property(x => x.Name)
+                    .HasMaxLength(100)
+                    .IsRequired()
+                    .IsUnicode(true)
+                    ;
+
+            modelBuilder.Entity<Product>().Property(x => x.Description)
+                    .HasMaxLength(200)
+                    .IsRequired()
+                    .IsUnicode(false)
+                    ;
+            modelBuilder.Entity<Product>().Property(x => x.Name)
+                    .HasMaxLength(100)
+                    .IsRequired()
+                    .IsUnicode(true)
+                    ;
+
         }
 
         public DbSet<Product> Products { get; set; }
