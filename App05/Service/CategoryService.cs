@@ -32,8 +32,17 @@ public class CategoryService
         repository.Delete(model);
     }
 
-    public List<Category> Get()
+    //Leak Layer
+    public List<Category> Get(bool? isActive = null)
     {
-        return repository.Get();
+        if (isActive.HasValue)
+        {
+            return repository.Get().Where(x => x.IsActive == isActive.Value).ToList();
+
+        }
+        else
+        {
+            return repository.Get().ToList();
+        }
     }
 }

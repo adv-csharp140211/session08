@@ -27,9 +27,14 @@ public class CategoryRepository
         ctx.SaveChanges();
     }
 
-    public List<Category> Get()
+    public IQueryable<Category> Get()
     {
-        using var ctx = new AppDbContext();
-        return ctx.Categories.ToList();
+        var ctx = new AppDbContext();
+        //var query = ctx.Categories
+        //    .Where(x => x.IsActive)
+        //    .OrderBy(x => x.Name);
+
+        //return ctx.Categories.ToList();
+        return ctx.Categories.AsQueryable();
     }
 }

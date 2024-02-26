@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace App05.UI
 {
@@ -34,7 +35,20 @@ namespace App05.UI
         private void loadData()
         {
             var service = new CategoryService();
-            dataGridView1.DataSource = service.Get();
+            var data = service.Get();
+            if (comboBox1.SelectedIndex > 0)
+            {
+                dataGridView1.DataSource = service.Get(comboBox1.SelectedIndex == 1);
+            }
+            else
+            {
+                dataGridView1.DataSource = service.Get();
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadData();
         }
     }
 }
