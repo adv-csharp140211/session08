@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             buttonCategory = new Button();
+            buttonProductList = new Button();
             SuspendLayout();
             // 
             // buttonCategory
@@ -41,11 +42,22 @@
             buttonCategory.UseVisualStyleBackColor = true;
             buttonCategory.Click += buttonCategory_Click;
             // 
+            // buttonProductList
+            // 
+            buttonProductList.Location = new Point(12, 41);
+            buttonProductList.Name = "buttonProductList";
+            buttonProductList.Size = new Size(194, 23);
+            buttonProductList.TabIndex = 1;
+            buttonProductList.Text = "Product List";
+            buttonProductList.UseVisualStyleBackColor = true;
+            buttonProductList.Click += buttonProductList_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonProductList);
             Controls.Add(buttonCategory);
             Name = "Form1";
             Text = "Form1";
@@ -55,5 +67,6 @@
         #endregion
 
         private Button buttonCategory;
+        private Button buttonProductList;
     }
 }

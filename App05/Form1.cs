@@ -17,7 +17,13 @@ namespace App05
         private void buttonCategory_Click(object sender, EventArgs e)
         {
             var form = new FormCategoryList();
-            form.ShowDialog();  
+            form.ShowDialog();
+        }
+
+        private void buttonProductList_Click(object sender, EventArgs e)
+        {
+            var frm = new FormProductList();
+            frm.ShowDialog();
         }
     }
 }
