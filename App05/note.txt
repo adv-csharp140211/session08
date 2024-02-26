@@ -1,0 +1,27 @@
+﻿EF Code First
+	1. install package dotnet-ef
+		dotnet tool install --global dotnet-ef
+		dotnet tool update  --global dotnet-ef
+
+
+		dotnet tool uninstall --global dotnet-ef
+		dotnet tool install --global --version 8.0.1 dotnet-ef
+
+	2. nuget package
+		* Microsoft.EntityFrameworkCore.SqlServer
+		Microsoft.EntityFrameworkCore.Design
+
+	3. DB Context
+		1. connection ⚠️
+		2. list entity
+
+	4. Entity - POCO (Plain Old CLR Object)
+	5. Add migration
+		dotnet ef migrations add <NAME>
+	6. Update Database
+		dotnet ef database update
+
+
+
+dotnet ef migration script
+https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/applying?tabs=dotnet-core-cli
