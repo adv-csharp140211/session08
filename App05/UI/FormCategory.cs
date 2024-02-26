@@ -22,8 +22,13 @@ namespace App05.UI
         private void buttonSave_Click(object sender, EventArgs e)
         {
             CategoryService service = new CategoryService();
-            service.Add(new Category { Name = textBoxName.Text, Description = textBoxDescription.Text });
+            service.Add(new Category { 
+                Name = textBoxName.Text, 
+                Description = textBoxDescription.Text,
+                IsActive = checkBoxIsActive.Checked,
+            });
             MessageBox.Show("Done");
+            Close();
         }
     }
 }

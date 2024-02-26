@@ -22,9 +22,15 @@ namespace App05.UI
         {
             var form = new FormCategory();
             form.ShowDialog();
+            loadData();
         }
 
         private void FormCategories_Load(object sender, EventArgs e)
+        {
+            loadData();
+        }
+
+        private void loadData()
         {
             var service = new CategoryService();
             dataGridView1.DataSource = service.Get();

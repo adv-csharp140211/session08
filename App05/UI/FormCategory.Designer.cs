@@ -33,61 +33,75 @@
             textBoxName = new TextBox();
             textBoxDescription = new TextBox();
             buttonSave = new Button();
+            checkBoxIsActive = new CheckBox();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(483, 47);
+            label1.Location = new Point(50, 47);
             label1.Name = "label1";
-            label1.Size = new Size(39, 15);
+            label1.Size = new Size(21, 15);
             label1.TabIndex = 0;
-            label1.Text = "Name";
+            label1.Text = "نام";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(483, 76);
+            label2.Location = new Point(50, 76);
             label2.Name = "label2";
-            label2.Size = new Size(67, 15);
+            label2.Size = new Size(29, 15);
             label2.TabIndex = 1;
-            label2.Text = "Description";
+            label2.Text = "شرح";
             // 
             // textBoxName
             // 
-            textBoxName.Location = new Point(50, 44);
+            textBoxName.Location = new Point(140, 44);
             textBoxName.Name = "textBoxName";
             textBoxName.Size = new Size(410, 23);
             textBoxName.TabIndex = 2;
             // 
             // textBoxDescription
             // 
-            textBoxDescription.Location = new Point(50, 73);
+            textBoxDescription.Location = new Point(140, 73);
             textBoxDescription.Name = "textBoxDescription";
             textBoxDescription.Size = new Size(410, 23);
             textBoxDescription.TabIndex = 3;
             // 
             // buttonSave
             // 
-            buttonSave.Location = new Point(50, 113);
+            buttonSave.Location = new Point(475, 135);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(75, 23);
             buttonSave.TabIndex = 4;
-            buttonSave.Text = "Save";
+            buttonSave.Text = "ذخیره";
             buttonSave.UseVisualStyleBackColor = true;
             buttonSave.Click += buttonSave_Click;
+            // 
+            // checkBoxIsActive
+            // 
+            checkBoxIsActive.AutoSize = true;
+            checkBoxIsActive.Location = new Point(140, 102);
+            checkBoxIsActive.Name = "checkBoxIsActive";
+            checkBoxIsActive.Size = new Size(50, 19);
+            checkBoxIsActive.TabIndex = 5;
+            checkBoxIsActive.Text = "فعال";
+            checkBoxIsActive.UseVisualStyleBackColor = true;
             // 
             // FormCategory
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(596, 179);
+            Controls.Add(checkBoxIsActive);
             Controls.Add(buttonSave);
             Controls.Add(textBoxDescription);
             Controls.Add(textBoxName);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "FormCategory";
+            RightToLeft = RightToLeft.Yes;
+            RightToLeftLayout = true;
             Text = "FormCategory";
             ResumeLayout(false);
             PerformLayout();
@@ -100,5 +114,6 @@
         private TextBox textBoxName;
         private TextBox textBoxDescription;
         private Button buttonSave;
+        private CheckBox checkBoxIsActive;
     }
 }
