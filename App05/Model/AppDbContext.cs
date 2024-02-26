@@ -15,6 +15,19 @@ namespace App05.Model
             base.OnConfiguring(optionsBuilder);
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            //Fluent Api // Chaine API
+            modelBuilder.Entity<Category>().Property(x => x.Description)
+                    .HasMaxLength(200)
+                    .IsRequired()
+                    .IsUnicode(false)                    
+                    ;
+            //
+        }
+
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
     }

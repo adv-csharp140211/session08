@@ -25,3 +25,13 @@
 
 dotnet ef migration script
 https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/applying?tabs=dotnet-core-cli
+
+
+EF Configuration
+1. Attribute
+	using System.ComponentModel.DataAnnotations;
+2. FluentApi
+	DbContext
+
+
+Scaffoling
