@@ -34,7 +34,7 @@ public class ProductService
     }
 
     //Leak Layer
-    public List<Product> Get()
+    public List<ProductVM> Get()
     {
         //load navigation data
         //1. 🚀 eager loading (join)
@@ -44,6 +44,22 @@ public class ProductService
         return repository
                 .Get()
                 .Include(x => x.Category)
+                .Select(d => new ProductVM  {
+                    Id=  d.Id,
+                    Name = d.Name, 
+                    Description = d.Description, 
+                    Price = d.Price,
+                    CatgoryName = d.Category.Name })
                 .ToList();
+    }
+
+    public class ProductVM
+    {
+        public int Id { get; set; }
+            
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public decimal Price { get; set; }
+        public string CatgoryName { get; set; }
     }
 }
