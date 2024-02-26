@@ -28,8 +28,8 @@ namespace App05.UI
 
         private void FormCategories_Load(object sender, EventArgs e)
         {
-            comboBox1.SelectedIndex = 0;
-            loadData();
+            HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
+            comboBox1.SelectedIndex = 0;            
         }
 
         private void loadData()
