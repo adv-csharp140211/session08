@@ -32,4 +32,17 @@ public class ProductRepository
         var ctx = new AppDbContext();
         return ctx.Products.AsQueryable();
     }
+
+    public Product ById(int id)
+    {
+        using var ctx = new AppDbContext();
+
+        //ctx.Products.Where(x => x.Id == id);
+        //ctx.Products.First(x => x.Id == id); // age payda nakone, Error
+        //ctx.Products.FirstOrDefault(x => x.Id == id); // age payda nakone, null
+        //ctx.Products.Single(x => x.Id == id); // age payda nakone, Error, Bishtar 1 payda kone, Error
+        //ctx.Products.SingleOrDefault(x => x.Id == id); // age payda nakone, null, , Bishtar 1 payda kone, Error
+
+        return ctx.Products.Find(id);
+    }
 }

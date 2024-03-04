@@ -53,6 +53,12 @@ public class ProductService
                 .ToList();
     }
 
+
+    public Product ById(int id)
+    {
+        return repository.ById(id);
+    }
+
     public class ProductVM
     {
         public int Id { get; set; }

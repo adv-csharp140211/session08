@@ -32,7 +32,22 @@ namespace App05.UI
         private void buttonNew_Click(object sender, EventArgs e)
         {
             var form = new FormProduct();
-            if(form.ShowDialog() == DialogResult.OK)
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                loadData();
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
+            var form = new FormProduct(id);
+            if (form.ShowDialog() == DialogResult.OK)
             {
                 loadData();
             }
