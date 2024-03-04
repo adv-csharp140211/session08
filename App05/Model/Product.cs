@@ -1,5 +1,6 @@
 ﻿namespace App05.Model;
 
+
 public class Product
 {
     public int Id { get; set; }
@@ -13,3 +14,4 @@ public class Product
     //Navigation Property
     public Category Category { get; set; }
 }
+

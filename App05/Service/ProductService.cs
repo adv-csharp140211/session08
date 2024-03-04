@@ -6,10 +6,12 @@ namespace App05.Service;
 
 public class ProductService
 {
-    ProductRepository repository;
+    //ProductRepository repository;
+    GenericRepository<Product> repository;
     public ProductService()
     {
-        repository = new ProductRepository();
+        //repository = new ProductRepository();
+        repository = new GenericRepository<Product>();
     }
 
     public void Add(Product model)
