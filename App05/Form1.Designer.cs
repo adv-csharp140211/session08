@@ -30,6 +30,8 @@
         {
             buttonCategory = new Button();
             buttonProductList = new Button();
+            button1 = new Button();
+            buttonStackGeneric = new Button();
             SuspendLayout();
             // 
             // buttonCategory
@@ -52,11 +54,33 @@
             buttonProductList.UseVisualStyleBackColor = true;
             buttonProductList.Click += buttonProductList_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(663, 12);
+            button1.Name = "button1";
+            button1.Size = new Size(125, 23);
+            button1.TabIndex = 2;
+            button1.Text = "Stack Int";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // buttonStackGeneric
+            // 
+            buttonStackGeneric.Location = new Point(663, 41);
+            buttonStackGeneric.Name = "buttonStackGeneric";
+            buttonStackGeneric.Size = new Size(125, 23);
+            buttonStackGeneric.TabIndex = 3;
+            buttonStackGeneric.Text = "Stack Generic";
+            buttonStackGeneric.UseVisualStyleBackColor = true;
+            buttonStackGeneric.Click += buttonStackGeneric_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonStackGeneric);
+            Controls.Add(button1);
             Controls.Add(buttonProductList);
             Controls.Add(buttonCategory);
             Name = "Form1";
@@ -68,5 +92,7 @@
 
         private Button buttonCategory;
         private Button buttonProductList;
+        private Button button1;
+        private Button buttonStackGeneric;
     }
 }
