@@ -13,6 +13,8 @@ namespace App05.UI
 {
     public partial class FormProductList : Form
     {
+        double PerPage = 3;
+        int page = 1;
         public FormProductList()
         {
             InitializeComponent();
@@ -22,6 +24,7 @@ namespace App05.UI
         {
             loadData();
             loadCategories();
+            
         }
 
         private void loadCategories()
@@ -30,14 +33,38 @@ namespace App05.UI
             comboBoxCategories.DisplayMember = "Name";
             comboBoxCategories.ValueMember = "Id";
             comboBoxCategories.DataSource = service.Get(true)
-                .Prepend(new Model.Category { Id = -1, Name = "انتخاب دسته بندی"})
+                .Prepend(new Model.Category { Id = -1, Name = "انتخاب دسته بندی" })
                 .ToList();
         }
 
         private void loadData()
         {
             var service = new ProductService();
-            dataGridView1.DataSource = service.Get(Convert.ToInt32(comboBoxCategories.SelectedValue));
+            (List<ProductService.ProductVM>, int) value = service.Get(
+                            Convert.ToInt32(comboBoxCategories.SelectedValue),
+                            textBoxFrom.Text,
+                            textBoxTo.Text,
+                            page, Convert.ToInt32(PerPage)
+                            );
+            dataGridView1.DataSource = value.Item1;
+
+            panel1.Controls.Clear();
+
+            for (int i = 0; i < Math.Ceiling(value.Item2 / PerPage); i++)
+            {
+                var button = new Button();
+                button.Text = (i + 1).ToString();
+                button.Location = new Point((i* button.Width) + 5 , 10);
+                button.Click += Button_Click;                
+                panel1.Controls.Add(button);
+            }
+          
+        }
+
+        private void Button_Click(object? sender, EventArgs e)
+        {
+            page = Convert.ToInt32(((Button)sender).Text);
+            loadData();
         }
 
         private void buttonNew_Click(object sender, EventArgs e)
@@ -65,6 +92,16 @@ namespace App05.UI
         }
 
         private void comboBoxCategories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadData();
+        }
+
+        private void textBoxFrom_TextChanged(object sender, EventArgs e)
+        {
+            loadData();
+        }
+
+        private void textBoxTo_TextChanged(object sender, EventArgs e)
         {
             loadData();
         }

@@ -34,7 +34,7 @@ public class ProductService
     }
 
     //Leak Layer
-    public List<ProductVM> Get(int categoryId)
+    public (List<ProductVM>, int) Get(int categoryId, string fromStr, string toStr, int page, int perPage)
     {
         //load navigation data
         //1. 🚀 eager loading (join)
@@ -45,17 +45,30 @@ public class ProductService
         var query = repository
                  .Get()
                  ;
-        if(categoryId > -1)
+        if(categoryId > 0)
         {
             /*  Linq
              *  Lambda
              *  Imutable
              *  Functional Programing -> Haskell, Lisp, Closure, Erlang
              */
-            query = query.Where(x => x.CategoryId == categoryId);
+             query = query.Where(x => x.CategoryId == categoryId);
         }
 
-        return query
+        if (!string.IsNullOrEmpty(fromStr)){
+           var from = Convert.ToInt32(fromStr);
+           query = query.Where(x => x.Price >= from);
+        }
+
+        if (!string.IsNullOrEmpty(toStr))
+        {
+            var to = Convert.ToInt32(toStr);
+            query = query.Where(x => x.Price <= to);
+        }
+
+
+
+        return (query
                  .Include(x => x.Category)
                  .Select(d => new ProductVM
                  {
@@ -65,7 +78,11 @@ public class ProductService
                      Price = d.Price,
                      CatgoryName = d.Category.Name
                  })
-                 .ToList();
+                 //.OrderBy(x => x.Price)
+                 .OrderByDescending(x => x.Price)
+                 .Skip((page -1) * perPage)
+                 .Take(perPage)
+                 .ToList(), query.Count());
 
     }
 
