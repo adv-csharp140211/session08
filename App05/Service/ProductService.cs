@@ -34,23 +34,39 @@ public class ProductService
     }
 
     //Leak Layer
-    public List<ProductVM> Get()
+    public List<ProductVM> Get(int categoryId)
     {
         //load navigation data
         //1. 🚀 eager loading (join)
         //2. explicit loading - 1+n problem
         //3. lazy loding -> package - 1+n problem
 
-        return repository
-                .Get()
-                .Include(x => x.Category)
-                .Select(d => new ProductVM  {
-                    Id=  d.Id,
-                    Name = d.Name, 
-                    Description = d.Description, 
-                    Price = d.Price,
-                    CatgoryName = d.Category.Name })
-                .ToList();
+
+        var query = repository
+                 .Get()
+                 ;
+        if(categoryId > -1)
+        {
+            /*  Linq
+             *  Lambda
+             *  Imutable
+             *  Functional Programing -> Haskell, Lisp, Closure, Erlang
+             */
+            query = query.Where(x => x.CategoryId == categoryId);
+        }
+
+        return query
+                 .Include(x => x.Category)
+                 .Select(d => new ProductVM
+                 {
+                     Id = d.Id,
+                     Name = d.Name,
+                     Description = d.Description,
+                     Price = d.Price,
+                     CatgoryName = d.Category.Name
+                 })
+                 .ToList();
+
     }
 
 

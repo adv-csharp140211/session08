@@ -21,12 +21,23 @@ namespace App05.UI
         private void FormProductList_Load(object sender, EventArgs e)
         {
             loadData();
+            loadCategories();
+        }
+
+        private void loadCategories()
+        {
+            var service = new CategoryService();
+            comboBoxCategories.DisplayMember = "Name";
+            comboBoxCategories.ValueMember = "Id";
+            comboBoxCategories.DataSource = service.Get(true)
+                .Prepend(new Model.Category { Id = -1, Name = "انتخاب دسته بندی"})
+                .ToList();
         }
 
         private void loadData()
         {
             var service = new ProductService();
-            dataGridView1.DataSource = service.Get();
+            dataGridView1.DataSource = service.Get(Convert.ToInt32(comboBoxCategories.SelectedValue));
         }
 
         private void buttonNew_Click(object sender, EventArgs e)
@@ -40,7 +51,7 @@ namespace App05.UI
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -51,6 +62,11 @@ namespace App05.UI
             {
                 loadData();
             }
+        }
+
+        private void comboBoxCategories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            loadData();
         }
     }
 }

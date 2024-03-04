@@ -30,6 +30,11 @@
         {
             dataGridView1 = new DataGridView();
             buttonNew = new Button();
+            comboBoxCategories = new ComboBox();
+            label1 = new Label();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -56,11 +61,58 @@
             buttonNew.UseVisualStyleBackColor = true;
             buttonNew.Click += buttonNew_Click;
             // 
+            // comboBoxCategories
+            // 
+            comboBoxCategories.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxCategories.FormattingEnabled = true;
+            comboBoxCategories.Location = new Point(654, 12);
+            comboBoxCategories.Name = "comboBoxCategories";
+            comboBoxCategories.Size = new Size(239, 23);
+            comboBoxCategories.TabIndex = 2;
+            comboBoxCategories.SelectedIndexChanged += comboBoxCategories_SelectedIndexChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(610, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 3;
+            label1.Text = "label1";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(504, 12);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 4;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(356, 13);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(100, 23);
+            textBox2.TabIndex = 6;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(462, 17);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 5;
+            label2.Text = "label2";
+            // 
             // FormProductList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(905, 446);
+            Controls.Add(textBox2);
+            Controls.Add(label2);
+            Controls.Add(textBox1);
+            Controls.Add(label1);
+            Controls.Add(comboBoxCategories);
             Controls.Add(buttonNew);
             Controls.Add(dataGridView1);
             Name = "FormProductList";
@@ -68,11 +120,17 @@
             Load += FormProductList_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private DataGridView dataGridView1;
         private Button buttonNew;
+        private ComboBox comboBoxCategories;
+        private Label label1;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private Label label2;
     }
 }
