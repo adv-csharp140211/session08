@@ -32,6 +32,8 @@
             buttonProductList = new Button();
             button1 = new Button();
             buttonStackGeneric = new Button();
+            buttonGenericRepo = new Button();
+            buttonGenericRepositoryNew = new Button();
             SuspendLayout();
             // 
             // buttonCategory
@@ -74,17 +76,40 @@
             buttonStackGeneric.UseVisualStyleBackColor = true;
             buttonStackGeneric.Click += buttonStackGeneric_Click;
             // 
+            // buttonGenericRepo
+            // 
+            buttonGenericRepo.Location = new Point(290, 224);
+            buttonGenericRepo.Name = "buttonGenericRepo";
+            buttonGenericRepo.Size = new Size(156, 23);
+            buttonGenericRepo.TabIndex = 4;
+            buttonGenericRepo.Text = " Generic Repo";
+            buttonGenericRepo.UseVisualStyleBackColor = true;
+            buttonGenericRepo.Click += buttonGenericRepo_Click;
+            // 
+            // buttonGenericRepositoryNew
+            // 
+            buttonGenericRepositoryNew.Location = new Point(290, 253);
+            buttonGenericRepositoryNew.Name = "buttonGenericRepositoryNew";
+            buttonGenericRepositoryNew.Size = new Size(156, 23);
+            buttonGenericRepositoryNew.TabIndex = 5;
+            buttonGenericRepositoryNew.Text = " Generic Repo New";
+            buttonGenericRepositoryNew.UseVisualStyleBackColor = true;
+            buttonGenericRepositoryNew.Click += buttonGenericRepositoryNew_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonGenericRepositoryNew);
+            Controls.Add(buttonGenericRepo);
             Controls.Add(buttonStackGeneric);
             Controls.Add(button1);
             Controls.Add(buttonProductList);
             Controls.Add(buttonCategory);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
         }
 
@@ -94,5 +119,7 @@
         private Button buttonProductList;
         private Button button1;
         private Button buttonStackGeneric;
+        private Button buttonGenericRepo;
+        private Button buttonGenericRepositoryNew;
     }
 }

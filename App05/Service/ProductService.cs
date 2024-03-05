@@ -12,6 +12,8 @@ public class ProductService
     {
         //repository = new ProductRepository();
         repository = new GenericRepository<Product>();
+
+
     }
 
     public void Add(Product model)

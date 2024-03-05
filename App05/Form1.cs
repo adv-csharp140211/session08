@@ -1,3 +1,5 @@
+using App05.Model;
+using App05.Repository;
 using App05.UI;
 
 namespace App05
@@ -52,6 +54,37 @@ namespace App05
 
             MessageBox.Show(stack.Pop().ToString());
             MessageBox.Show(stack.Pop().ToString());
+        }
+
+        private void buttonGenericRepo_Click(object sender, EventArgs e)
+        {
+            var categoryRepo = new GenericRepository<Category>();
+            var productRepo = new GenericRepository<Product>();
+            //Unit Of Work
+
+            var category = new Category { Name = "Test", Description = "Test", IsActive = true };
+            categoryRepo.Add(category);
+
+            var product = new Product { Name = "Test", Description = "Test", Category = category, Price = 500 };
+            productRepo.Add(product);
+
+
+        }
+
+        private void buttonGenericRepositoryNew_Click(object sender, EventArgs e)
+        {
+            var repo = new GenericRepositoryNew();
+
+            var category = new Category { Name = "Test", Description = "Test", IsActive = true };
+            repo.Add(category);
+
+            var product = new Product { Name = "TestPPP", Description = "Test", CategoryId = category.Id, Price = 500 };
+            repo.Add(product);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
         }
     }
 
