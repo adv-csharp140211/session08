@@ -34,6 +34,7 @@
             buttonStackGeneric = new Button();
             buttonGenericRepo = new Button();
             buttonGenericRepositoryNew = new Button();
+            buttonReflection = new Button();
             SuspendLayout();
             // 
             // buttonCategory
@@ -96,11 +97,22 @@
             buttonGenericRepositoryNew.UseVisualStyleBackColor = true;
             buttonGenericRepositoryNew.Click += buttonGenericRepositoryNew_Click;
             // 
+            // buttonReflection
+            // 
+            buttonReflection.Location = new Point(290, 295);
+            buttonReflection.Name = "buttonReflection";
+            buttonReflection.Size = new Size(156, 23);
+            buttonReflection.TabIndex = 6;
+            buttonReflection.Text = "Reflection 1";
+            buttonReflection.UseVisualStyleBackColor = true;
+            buttonReflection.Click += buttonReflection_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonReflection);
             Controls.Add(buttonGenericRepositoryNew);
             Controls.Add(buttonGenericRepo);
             Controls.Add(buttonStackGeneric);
@@ -121,5 +133,6 @@
         private Button buttonStackGeneric;
         private Button buttonGenericRepo;
         private Button buttonGenericRepositoryNew;
+        private Button buttonReflection;
     }
 }

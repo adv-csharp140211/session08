@@ -1,6 +1,7 @@
 using app07.Model;
 using app07.Repository;
 using app07.UI;
+using System.Text;
 
 namespace app07
 {
@@ -85,6 +86,49 @@ namespace app07
         private void Form1_Load(object sender, EventArgs e)
         {
             HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
+        }
+
+        private void buttonReflection_Click(object sender, EventArgs e)
+        {
+            var product = new Product { Name = "TestPPP", Description = "Test", CategoryId = 20, Price = 500 };
+            var category = new Category { Name = "Test", Description = "Test", IsActive = true };
+            //Reflection
+
+            //JSON - JavaScript Object Notation
+            //{ "Name" : "TestPPP", "Description" : "Test", "CategoryId" : 20, "Price" : 500 }
+            var productJson = toJosnSpecific(product);
+            //var categoryJson = toJosn(category);
+
+            var json1 = toJosnReflection(product);
+            var json2 = toJosnReflection(category);
+            MessageBox.Show(json2);
+
+
+        }
+
+        private string toJosnSpecific(Product p)
+        {
+
+            return $"{{ \"Name\" : \"{p.Name}\", \"Description\" : \"{p.Description}\", \"CategoryId\" : {p.CategoryId}, \"Price\" : {p.Price} }}";
+        }
+
+        private string toJosnReflection(object p)
+        {
+            var sb = new StringBuilder();
+            sb.Append("{");
+            Type type = p.GetType();
+            var props = type.GetProperties();
+            foreach ( var prop in props )
+            {
+                var x = prop.PropertyType;
+                sb.Append("\"");
+                sb.Append(prop.Name);
+                sb.Append("\": \"");
+                sb.Append(prop.GetValue(p));
+                sb.Append("\",");
+            }
+            sb.Append("}");
+            return sb.ToString();
         }
     }
 
