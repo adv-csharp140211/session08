@@ -1,6 +1,7 @@
 ﻿using app07.Model;
 using app07.Repository;
 using app07.Utils;
+using BC = BCrypt.Net.BCrypt;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +32,8 @@ namespace app07.UI
                 return;
             }
             var hash = (textBoxPassword.Text + user.Salt).ToHashSha512();
-            if (hash != user.Password)
+            ;
+            if (!BC.Verify(textBoxPassword.Text, user.Password))
             {
                 MessageBox.Show("Username/Password is incorect");
                 return;

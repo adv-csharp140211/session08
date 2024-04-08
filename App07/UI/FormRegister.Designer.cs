@@ -43,6 +43,7 @@
             label1.Size = new Size(60, 15);
             label1.TabIndex = 0;
             label1.Text = "Username";
+            label1.Click += label1_Click;
             // 
             // textBoxUsername
             // 
