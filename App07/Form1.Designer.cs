@@ -36,6 +36,7 @@
             buttonGenericRepositoryNew = new Button();
             buttonReflection = new Button();
             buttonRegister = new Button();
+            buttonLogin = new Button();
             SuspendLayout();
             // 
             // buttonCategory
@@ -118,11 +119,22 @@
             buttonRegister.UseVisualStyleBackColor = true;
             buttonRegister.Click += buttonRegister_Click;
             // 
+            // buttonLogin
+            // 
+            buttonLogin.Location = new Point(663, 253);
+            buttonLogin.Name = "buttonLogin";
+            buttonLogin.Size = new Size(125, 23);
+            buttonLogin.TabIndex = 8;
+            buttonLogin.Text = "Login";
+            buttonLogin.UseVisualStyleBackColor = true;
+            buttonLogin.Click += buttonLogin_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonLogin);
             Controls.Add(buttonRegister);
             Controls.Add(buttonReflection);
             Controls.Add(buttonGenericRepositoryNew);
@@ -147,5 +159,6 @@
         private Button buttonGenericRepositoryNew;
         private Button buttonReflection;
         private Button buttonRegister;
+        private Button buttonLogin;
     }
 }

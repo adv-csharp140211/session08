@@ -134,7 +134,13 @@ namespace app07
         private void buttonRegister_Click(object sender, EventArgs e)
         {
             var form = new FormRegister();
-            form.ShowDialog();  
+            form.ShowDialog();
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            var form = new FormLogin();
+            form.ShowDialog();
         }
     }
 
