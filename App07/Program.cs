@@ -1,3 +1,5 @@
+using app07.UI;
+
 namespace app07
 {
     internal static class Program
@@ -12,7 +14,7 @@ namespace app07
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new FormLogin());
         }
     }
 }

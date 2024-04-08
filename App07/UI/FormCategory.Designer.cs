@@ -103,6 +103,7 @@
             RightToLeft = RightToLeft.Yes;
             RightToLeftLayout = true;
             Text = "FormCategory";
+            Load += FormCategory_Load;
             ResumeLayout(false);
             PerformLayout();
         }

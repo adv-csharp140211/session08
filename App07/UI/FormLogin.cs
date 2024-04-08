@@ -16,6 +16,7 @@ namespace app07.UI
 {
     public partial class FormLogin : Form
     {
+        public static User CurrentUser;
         public FormLogin()
         {
             InitializeComponent();
@@ -24,6 +25,11 @@ namespace app07.UI
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            if(String.IsNullOrEmpty(textBoxUsername.Text) || String.IsNullOrEmpty(textBoxPassword.Text))
+            {
+                MessageBox.Show("Username/Password is required");
+                return;
+            }
             var repo = new GenericRepositoryNew();
             var user = repo.Get<User>().FirstOrDefault(x => x.Username == textBoxUsername.Text);
             if (user == null)
@@ -38,8 +44,11 @@ namespace app07.UI
                 MessageBox.Show("Username/Password is incorect");
                 return;
             }
-
+            CurrentUser = user;
             //
+            Hide();
+            var frm = new Form1();
+            frm.ShowDialog();
             Close();
         }
     }

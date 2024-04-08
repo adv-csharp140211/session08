@@ -22,13 +22,23 @@ namespace app07.UI
         private void buttonSave_Click(object sender, EventArgs e)
         {
             CategoryService service = new CategoryService();
-            service.Add(new Category { 
-                Name = textBoxName.Text, 
+            service.Add(new Category
+            {
+                Name = textBoxName.Text,
                 Description = textBoxDescription.Text,
                 IsActive = checkBoxIsActive.Checked,
             });
             MessageBox.Show("Done");
             Close();
+        }
+
+        private void FormCategory_Load(object sender, EventArgs e)
+        {
+            //if(FormLogin.CurrentUser.Role != "admin")
+            //{
+            //    MessageBox.Show("Access Denied");
+            //    Close();
+            //}
         }
     }
 }
