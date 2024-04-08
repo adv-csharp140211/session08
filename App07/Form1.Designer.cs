@@ -37,6 +37,7 @@
             buttonReflection = new Button();
             buttonRegister = new Button();
             buttonLogin = new Button();
+            buttonPermissions = new Button();
             SuspendLayout();
             // 
             // buttonCategory
@@ -129,11 +130,22 @@
             buttonLogin.UseVisualStyleBackColor = true;
             buttonLogin.Click += buttonLogin_Click;
             // 
+            // buttonPermissions
+            // 
+            buttonPermissions.Location = new Point(663, 282);
+            buttonPermissions.Name = "buttonPermissions";
+            buttonPermissions.Size = new Size(125, 23);
+            buttonPermissions.TabIndex = 9;
+            buttonPermissions.Text = "Permissions";
+            buttonPermissions.UseVisualStyleBackColor = true;
+            buttonPermissions.Click += buttonPermissions_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonPermissions);
             Controls.Add(buttonLogin);
             Controls.Add(buttonRegister);
             Controls.Add(buttonReflection);
@@ -160,5 +172,6 @@
         private Button buttonReflection;
         private Button buttonRegister;
         private Button buttonLogin;
+        private Button buttonPermissions;
     }
 }

@@ -32,6 +32,7 @@
             comboBoxRoles = new ComboBox();
             listBoxForms = new ListBox();
             label2 = new Label();
+            checkedListBoxButtons = new CheckedListBox();
             SuspendLayout();
             // 
             // label1
@@ -58,8 +59,9 @@
             listBoxForms.ItemHeight = 15;
             listBoxForms.Location = new Point(64, 70);
             listBoxForms.Name = "listBoxForms";
-            listBoxForms.Size = new Size(220, 394);
+            listBoxForms.Size = new Size(220, 379);
             listBoxForms.TabIndex = 2;
+            listBoxForms.SelectedIndexChanged += listBoxForms_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -70,11 +72,20 @@
             label2.TabIndex = 3;
             label2.Text = "Forms";
             // 
+            // checkedListBoxButtons
+            // 
+            checkedListBoxButtons.FormattingEnabled = true;
+            checkedListBoxButtons.Location = new Point(290, 70);
+            checkedListBoxButtons.Name = "checkedListBoxButtons";
+            checkedListBoxButtons.Size = new Size(280, 382);
+            checkedListBoxButtons.TabIndex = 4;
+            // 
             // FormPermission
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(595, 524);
+            Controls.Add(checkedListBoxButtons);
             Controls.Add(label2);
             Controls.Add(listBoxForms);
             Controls.Add(comboBoxRoles);
@@ -92,5 +103,6 @@
         private ComboBox comboBoxRoles;
         private ListBox listBoxForms;
         private Label label2;
+        private CheckedListBox checkedListBoxButtons;
     }
 }

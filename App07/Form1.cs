@@ -142,6 +142,12 @@ namespace app07
             var form = new FormLogin();
             form.ShowDialog();
         }
+
+        private void buttonPermissions_Click(object sender, EventArgs e)
+        {
+            var form = new FormPermission();
+            form.ShowDialog();
+        }
     }
 
 }
