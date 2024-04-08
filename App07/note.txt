@@ -58,7 +58,7 @@ Security
 			password
 				   plain text ❌
 				   hash: -> 1 tarafe
-				   hash(plain text + salt)
+				   hash(plain text + salt) 10 20 30 500
 					
 
 		LDAP

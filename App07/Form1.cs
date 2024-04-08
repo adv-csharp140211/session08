@@ -118,7 +118,7 @@ namespace app07
             sb.Append("{");
             Type type = p.GetType();
             var props = type.GetProperties();
-            foreach ( var prop in props )
+            foreach (var prop in props)
             {
                 var x = prop.PropertyType;
                 sb.Append("\"");
@@ -129,6 +129,12 @@ namespace app07
             }
             sb.Append("}");
             return sb.ToString();
+        }
+
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            var form = new FormRegister();
+            form.ShowDialog();  
         }
     }
 

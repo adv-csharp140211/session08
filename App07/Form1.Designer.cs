@@ -35,6 +35,7 @@
             buttonGenericRepo = new Button();
             buttonGenericRepositoryNew = new Button();
             buttonReflection = new Button();
+            buttonRegister = new Button();
             SuspendLayout();
             // 
             // buttonCategory
@@ -107,11 +108,22 @@
             buttonReflection.UseVisualStyleBackColor = true;
             buttonReflection.Click += buttonReflection_Click;
             // 
+            // buttonRegister
+            // 
+            buttonRegister.Location = new Point(663, 224);
+            buttonRegister.Name = "buttonRegister";
+            buttonRegister.Size = new Size(125, 23);
+            buttonRegister.TabIndex = 7;
+            buttonRegister.Text = "Register";
+            buttonRegister.UseVisualStyleBackColor = true;
+            buttonRegister.Click += buttonRegister_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(buttonRegister);
             Controls.Add(buttonReflection);
             Controls.Add(buttonGenericRepositoryNew);
             Controls.Add(buttonGenericRepo);
@@ -134,5 +146,6 @@
         private Button buttonGenericRepo;
         private Button buttonGenericRepositoryNew;
         private Button buttonReflection;
+        private Button buttonRegister;
     }
 }
