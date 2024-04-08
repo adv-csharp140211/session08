@@ -41,3 +41,31 @@ Generics
 	
 
 Reflection
+
+
+Security
+	Authenticate
+		اهراز هویت
+
+		From Login
+			
+			username 
+				-> unique 
+				   any string?
+				   email
+				   phone / otp : one time password
+				   national code
+			password
+				   plain text ❌
+				   hash: -> 1 tarafe
+				   hash(plain text + salt)
+					
+
+		LDAP
+		OAuth 2.0
+		
+	Authorize
+		Role
+		RBAC - Role Based Access Control
+		Permisison
+
