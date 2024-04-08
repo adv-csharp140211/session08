@@ -27,13 +27,13 @@ namespace app07.UI
             var user = repo.Get<User>().FirstOrDefault(x => x.Username == textBoxUsername.Text);
             if (user == null)
             {
-                MessageBox.Show("Username not found");
+                MessageBox.Show("Username/Password is incorect");
                 return;
             }
             var hash = (textBoxPassword.Text + user.Salt).ToHashSha512();
             if (hash != user.Password)
             {
-                MessageBox.Show("Password is incorect");
+                MessageBox.Show("Username/Password is incorect");
                 return;
             }
 
