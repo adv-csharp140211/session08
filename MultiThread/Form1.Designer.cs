@@ -30,6 +30,9 @@ partial class Form1
     {
         buttonSendEmail = new Button();
         buttonShowMessage = new Button();
+        progressBar1 = new ProgressBar();
+        buttonRace = new Button();
+        listBoxMsg = new ListBox();
         SuspendLayout();
         // 
         // buttonSendEmail
@@ -52,11 +55,40 @@ partial class Form1
         buttonShowMessage.UseVisualStyleBackColor = true;
         buttonShowMessage.Click += buttonShowMessage_Click;
         // 
+        // progressBar1
+        // 
+        progressBar1.Location = new Point(286, 60);
+        progressBar1.Name = "progressBar1";
+        progressBar1.Size = new Size(484, 23);
+        progressBar1.TabIndex = 2;
+        // 
+        // buttonRace
+        // 
+        buttonRace.Location = new Point(164, 201);
+        buttonRace.Name = "buttonRace";
+        buttonRace.Size = new Size(116, 40);
+        buttonRace.TabIndex = 3;
+        buttonRace.Text = "Race Condition";
+        buttonRace.UseVisualStyleBackColor = true;
+        buttonRace.Click += buttonRace_Click;
+        // 
+        // listBoxMsg
+        // 
+        listBoxMsg.FormattingEnabled = true;
+        listBoxMsg.ItemHeight = 15;
+        listBoxMsg.Location = new Point(286, 201);
+        listBoxMsg.Name = "listBoxMsg";
+        listBoxMsg.Size = new Size(239, 169);
+        listBoxMsg.TabIndex = 4;
+        // 
         // Form1
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(782, 412);
+        Controls.Add(listBoxMsg);
+        Controls.Add(buttonRace);
+        Controls.Add(progressBar1);
         Controls.Add(buttonShowMessage);
         Controls.Add(buttonSendEmail);
         Name = "Form1";
@@ -68,4 +100,7 @@ partial class Form1
 
     private Button buttonSendEmail;
     private Button buttonShowMessage;
+    private ProgressBar progressBar1;
+    private Button buttonRace;
+    private ListBox listBoxMsg;
 }
