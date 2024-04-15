@@ -53,6 +53,7 @@
             comboBoxRoles.Name = "comboBoxRoles";
             comboBoxRoles.Size = new Size(506, 23);
             comboBoxRoles.TabIndex = 1;
+            comboBoxRoles.SelectedIndexChanged += comboBoxRoles_SelectedIndexChanged;
             // 
             // listBoxForms
             // 

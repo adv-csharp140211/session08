@@ -104,8 +104,9 @@ namespace app07.UI
             //Audit log / Soft Delete
 
 
-            foreach (var checkedButton in checkedButtons) { 
-                var parts  = checkedButton.Split('|');
+            foreach (var checkedButton in checkedButtons)
+            {
+                var parts = checkedButton.Split('|');
                 var formName = parts[0];
                 var buttonName = parts[1];
                 var buttonTitle = parts[2];
@@ -121,6 +122,26 @@ namespace app07.UI
             }
 
             MessageBox.Show("Done");
+        }
+
+        private void comboBoxRoles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkedButtons.Clear();
+
+            var permissions = repository.Get<Permission>().ToList();
+            var roleId = (int)comboBoxRoles.SelectedValue;
+
+            var permissionRoles = repository.Get<Role>()
+                .Include(x => x.PermissionRoles)
+                .FirstOrDefault(x => x.Id == roleId)
+                .PermissionRoles
+                ;
+
+            foreach ( var permissionRole in permissionRoles)
+            {
+                var p = permissions.FirstOrDefault(x => x.Id == permissionRole.PermissionId);
+                checkedButtons.Add($"{p.FormName}|{p.ButtonName}|{p.ButtonTitle}");
+            }
         }
     }
 }
