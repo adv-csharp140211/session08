@@ -29,9 +29,12 @@ namespace app07.UI
             }
 
             var connection = new SqlConnection(connectionStr);
-            var count = connection.Execute(@"insert into [forosh].[Dastebandi] (Name, Description, IsActive) values (@Name, @Description, @IsActive)", new Category { Name = "test", Description = "test cat", IsActive = true});
+            //var count = connection.Execute(@"insert into [forosh].[Dastebandi] (Name, Description, IsActive) values (@Name, @Description, @IsActive)", new Category { Name = "test", Description = "test cat", IsActive = true});
+            var users = connection.Query<User>("select * from users");
 
-            MessageBox.Show("Done " + count);
+
+
+            MessageBox.Show("Done " + users.Count());
 
 
             var repo = new GenericRepositoryNew();
