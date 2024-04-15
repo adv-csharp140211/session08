@@ -1,6 +1,7 @@
 using app07.Model;
 using app07.Repository;
 using app07.UI;
+using app08.Utils;
 using System.Text;
 
 namespace app07
@@ -87,19 +88,20 @@ namespace app07
         {
             HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
             toolStripStatusLabelUserInfo.Text = $"User: {FormLogin.CurrentUser.Username} - Role: {FormLogin.CurrentUser.Role.Name}";
-            foreach (var ctrl in this.Controls) 
-            {
-                if(ctrl is Button btn)
-                {
-                    btn.Enabled = false;
-                    var permission = FormLogin.Permissions
-                        .FirstOrDefault(x => x.ButtonName == btn.Name && x.FormName == this.GetType().FullName);
-                    if(permission != null && FormLogin.CurrentUser.Role.PermissionRoles.Any(x => x.PermissionId == permission.Id))
-                    {
-                        btn.Enabled = true;
-                    }
-                }
-            }
+            //foreach (var ctrl in this.Controls) 
+            //{
+                //if(ctrl is Button btn)
+                //{
+                //    btn.Enabled = false;
+                //    var permission = FormLogin.Permissions
+                //        .FirstOrDefault(x => x.ButtonName == btn.Name && x.FormName == this.GetType().FullName);
+                //    if(permission != null && FormLogin.CurrentUser.Role.PermissionRoles.Any(x => x.PermissionId == permission.Id))
+                //    {
+                //        btn.Enabled = true;
+                //    }
+                //}
+            //}
+            this.ApplyAuthorization();
         }
 
         private void buttonReflection_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using app07.Service;
+using app08.Utils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,11 @@ namespace app07.UI
         {
             loadData();
             loadCategories();
-            
+
+
+            //AuthUtils.ApplyAuthorization(this);
+            this.ApplyAuthorization();
+
         }
 
         private void loadCategories()

@@ -43,6 +43,8 @@ public partial class FormProduct : Form
             textBoxPrice.Text = product.Price.ToString();
             comboBoxCategory.SelectedItem = categories.FirstOrDefault(x => x.Id == product.CategoryId);
         }
+
+        
     }
 
     private void buttonSave_Click(object sender, EventArgs e)
