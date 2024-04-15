@@ -18,6 +18,12 @@ namespace app07.Model
             base.OnConfiguring(optionsBuilder);
         }
 
+
+        public override int SaveChanges()
+        {
+            //
+            return base.SaveChanges();
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

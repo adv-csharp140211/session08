@@ -1,5 +1,6 @@
 ﻿using app07.Model;
 using app07.Repository;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,7 +56,7 @@ namespace app07.UI
                 if (ctrl is Button btn)
                 {
                     //var btn = (Button)ctrl;
-                    string key = $"{formName}|{btn.Name}";
+                    string key = $"{formName}|{btn.Name}|{btn.Text}";
                     checkedListBoxButtons.Items.Add(key, checkedButtons.Contains(key));
                 }
             }
@@ -69,7 +70,7 @@ namespace app07.UI
             {
                 return;
             }
-            if(e.NewValue == CheckState.Checked && !checkedButtons.Contains(buttoName))
+            if (e.NewValue == CheckState.Checked && !checkedButtons.Contains(buttoName))
             {
                 checkedButtons.Add(buttoName);
             }
@@ -77,6 +78,49 @@ namespace app07.UI
             {
                 checkedButtons.Remove(buttoName);
             }
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            var permissions = repository.Get<Permission>().ToList();
+            var roleId = (int)comboBoxRoles.SelectedValue;
+
+            //EF OLD for delete
+            //var permissionRoles = repository.Get<Role>()
+            //    .Include(x => x.PermissionRoles)
+            //    .FirstOrDefault(x => x.Id == roleId)
+            //    .PermissionRoles
+            //    ;
+            //foreach ( var permission in permissions)
+            //{
+            //    repository.Delete(permission);
+            //}
+
+            //EF New 
+            repository.Get<PermissionRole>().Where(x => x.RoleId == roleId).ExecuteDelete();
+
+            //Trade Off
+            //Intercepor
+            //Audit log / Soft Delete
+
+
+            foreach (var checkedButton in checkedButtons) { 
+                var parts  = checkedButton.Split('|');
+                var formName = parts[0];
+                var buttonName = parts[1];
+                var buttonTitle = parts[2];
+
+                var permission = permissions.FirstOrDefault(x => x.FormName == formName && x.ButtonName == buttonName);
+                if (permission == null)
+                {
+                    permission = new Permission { ButtonName = buttonName, FormName = formName, ButtonTitle = buttonTitle };
+                    repository.Add(permission);
+                }
+
+                repository.Add(new PermissionRole { RoleId = roleId, PermissionId = permission.Id });
+            }
+
+            MessageBox.Show("Done");
         }
     }
 }

@@ -33,6 +33,7 @@
             listBoxForms = new ListBox();
             label2 = new Label();
             checkedListBoxButtons = new CheckedListBox();
+            buttonSave = new Button();
             SuspendLayout();
             // 
             // label1
@@ -81,11 +82,22 @@
             checkedListBoxButtons.TabIndex = 4;
             checkedListBoxButtons.ItemCheck += checkedListBoxButtons_ItemCheck;
             // 
+            // buttonSave
+            // 
+            buttonSave.Location = new Point(459, 458);
+            buttonSave.Name = "buttonSave";
+            buttonSave.Size = new Size(111, 23);
+            buttonSave.TabIndex = 5;
+            buttonSave.Text = "Save";
+            buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.Click += buttonSave_Click;
+            // 
             // FormPermission
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(595, 524);
+            ClientSize = new Size(595, 505);
+            Controls.Add(buttonSave);
             Controls.Add(checkedListBoxButtons);
             Controls.Add(label2);
             Controls.Add(listBoxForms);
@@ -105,5 +117,6 @@
         private ListBox listBoxForms;
         private Label label2;
         private CheckedListBox checkedListBoxButtons;
+        private Button buttonSave;
     }
 }

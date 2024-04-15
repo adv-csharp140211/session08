@@ -10,8 +10,10 @@ public class Product
 
     public int CategoryId { get; set; }
 
+    public bool IsDelete { get; set; }
 
     //Navigation Property
     public Category Category { get; set; }
+    
 }
 
