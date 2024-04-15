@@ -2,16 +2,10 @@
 using app07.Repository;
 using app07.Utils;
 using BC = BCrypt.Net.BCrypt;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Dapper;
 using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace app07.UI
 {
@@ -24,6 +18,7 @@ namespace app07.UI
             InitializeComponent();
         }
 
+        string connectionStr = "data source=.;initial catalog=cs140211-codefirst2;integrated security=True;trustservercertificate=True;MultipleActiveResultSets=True;App=AppDBFirst";
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
@@ -32,6 +27,13 @@ namespace app07.UI
                 MessageBox.Show("Username/Password is required");
                 return;
             }
+
+            var connection = new SqlConnection(connectionStr);
+            var count = connection.Execute(@"insert into [forosh].[Dastebandi] (Name, Description, IsActive) values (@Name, @Description, @IsActive)", new Category { Name = "test", Description = "test cat", IsActive = true});
+
+            MessageBox.Show("Done " + count);
+
+
             var repo = new GenericRepositoryNew();
             var user = repo.Get<User>()
                 .Include(x => x.Role)
