@@ -79,6 +79,7 @@
             checkedListBoxButtons.Name = "checkedListBoxButtons";
             checkedListBoxButtons.Size = new Size(280, 382);
             checkedListBoxButtons.TabIndex = 4;
+            checkedListBoxButtons.ItemCheck += checkedListBoxButtons_ItemCheck;
             // 
             // FormPermission
             // 

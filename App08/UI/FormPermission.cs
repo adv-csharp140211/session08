@@ -1,4 +1,6 @@
-﻿using System;
+﻿using app07.Model;
+using app07.Repository;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +15,9 @@ namespace app07.UI
 {
     public partial class FormPermission : Form
     {
+        GenericRepositoryNew repository = new GenericRepositoryNew();
+        List<string> checkedButtons = new List<string>();
+
         public FormPermission()
         {
             InitializeComponent();
@@ -26,6 +31,10 @@ namespace app07.UI
             {
                 listBoxForms.Items.Add(form.FullName);
             }
+
+            comboBoxRoles.DisplayMember = "Name";
+            comboBoxRoles.ValueMember = "Id";
+            comboBoxRoles.DataSource = repository.Get<Role>().ToList();
         }
 
         private void listBoxForms_SelectedIndexChanged(object sender, EventArgs e)
@@ -43,12 +52,31 @@ namespace app07.UI
 
             foreach (var ctrl in frm.Controls)
             {
-                if(ctrl is Button btn)
+                if (ctrl is Button btn)
                 {
-                    checkedListBoxButtons.Items.Add(btn.Name);
+                    //var btn = (Button)ctrl;
+                    string key = $"{formName}|{btn.Name}";
+                    checkedListBoxButtons.Items.Add(key, checkedButtons.Contains(key));
                 }
             }
-            
+
+        }
+
+        private void checkedListBoxButtons_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            string buttoName = checkedListBoxButtons.SelectedItem as string;
+            if (string.IsNullOrEmpty(buttoName))
+            {
+                return;
+            }
+            if(e.NewValue == CheckState.Checked && !checkedButtons.Contains(buttoName))
+            {
+                checkedButtons.Add(buttoName);
+            }
+            if (e.NewValue == CheckState.Unchecked && checkedButtons.Contains(buttoName))
+            {
+                checkedButtons.Remove(buttoName);
+            }
         }
     }
 }
