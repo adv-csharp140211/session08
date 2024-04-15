@@ -86,6 +86,20 @@ namespace app07
         private void Form1_Load(object sender, EventArgs e)
         {
             HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
+            toolStripStatusLabelUserInfo.Text = $"User: {FormLogin.CurrentUser.Username} - Role: {FormLogin.CurrentUser.Role.Name}";
+            foreach (var ctrl in this.Controls) 
+            {
+                if(ctrl is Button btn)
+                {
+                    btn.Enabled = false;
+                    var permission = FormLogin.Permissions
+                        .FirstOrDefault(x => x.ButtonName == btn.Name && x.FormName == this.GetType().FullName);
+                    if(permission != null && FormLogin.CurrentUser.Role.PermissionRoles.Any(x => x.PermissionId == permission.Id))
+                    {
+                        btn.Enabled = true;
+                    }
+                }
+            }
         }
 
         private void buttonReflection_Click(object sender, EventArgs e)
@@ -148,6 +162,8 @@ namespace app07
             var form = new FormPermission();
             form.ShowDialog();
         }
+
+        
     }
 
 }

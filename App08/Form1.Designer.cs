@@ -38,6 +38,9 @@
             buttonRegister = new Button();
             buttonLogin = new Button();
             buttonPermissions = new Button();
+            statusStrip1 = new StatusStrip();
+            toolStripStatusLabelUserInfo = new ToolStripStatusLabel();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // buttonCategory
@@ -140,11 +143,27 @@
             buttonPermissions.UseVisualStyleBackColor = true;
             buttonPermissions.Click += buttonPermissions_Click;
             // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelUserInfo });
+            statusStrip1.Location = new Point(0, 428);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(800, 22);
+            statusStrip1.TabIndex = 10;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabelUserInfo
+            // 
+            toolStripStatusLabelUserInfo.Name = "toolStripStatusLabelUserInfo";
+            toolStripStatusLabelUserInfo.Size = new Size(156, 17);
+            toolStripStatusLabelUserInfo.Text = "toolStripStatusLabelUserInfo";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(statusStrip1);
             Controls.Add(buttonPermissions);
             Controls.Add(buttonLogin);
             Controls.Add(buttonRegister);
@@ -158,7 +177,10 @@
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -173,5 +195,7 @@
         private Button buttonRegister;
         private Button buttonLogin;
         private Button buttonPermissions;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel toolStripStatusLabelUserInfo;
     }
 }

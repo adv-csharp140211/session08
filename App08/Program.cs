@@ -14,8 +14,8 @@ namespace app07
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
-            //Application.Run(new FormLogin());
-            Application.Run(new Form1());
+            Application.Run(new FormLogin());
+            //Application.Run(new Form1());
         }
     }
 }
