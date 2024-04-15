@@ -43,7 +43,7 @@ public partial class Form1 : Form
         t1.Start();
         t2.Start();
         t3.Start();
-
+        MessageBox.Show("Done?");
     }
 
 
@@ -88,5 +88,6 @@ public partial class Form1 : Form
         await updateBalanceAsync(10, rnd.Next(1000));
         await updateBalanceAsync(-50, rnd.Next(1000));
         await updateBalanceAsync(20, rnd.Next(1000));
+        MessageBox.Show("Done?");
     }
 }
