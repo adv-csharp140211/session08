@@ -33,6 +33,7 @@ partial class Form1
         progressBar1 = new ProgressBar();
         buttonRace = new Button();
         listBoxMsg = new ListBox();
+        buttonAsyncAwait = new Button();
         SuspendLayout();
         // 
         // buttonSendEmail
@@ -81,11 +82,22 @@ partial class Form1
         listBoxMsg.Size = new Size(239, 169);
         listBoxMsg.TabIndex = 4;
         // 
+        // buttonAsyncAwait
+        // 
+        buttonAsyncAwait.Location = new Point(164, 247);
+        buttonAsyncAwait.Name = "buttonAsyncAwait";
+        buttonAsyncAwait.Size = new Size(116, 40);
+        buttonAsyncAwait.TabIndex = 5;
+        buttonAsyncAwait.Text = "Asyn/Await";
+        buttonAsyncAwait.UseVisualStyleBackColor = true;
+        buttonAsyncAwait.Click += buttonAsyncAwait_Click;
+        // 
         // Form1
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(782, 412);
+        Controls.Add(buttonAsyncAwait);
         Controls.Add(listBoxMsg);
         Controls.Add(buttonRace);
         Controls.Add(progressBar1);
@@ -103,4 +115,5 @@ partial class Form1
     private ProgressBar progressBar1;
     private Button buttonRace;
     private ListBox listBoxMsg;
+    private Button buttonAsyncAwait;
 }

@@ -43,6 +43,7 @@ public partial class Form1 : Form
         t1.Start();
         t2.Start();
         t3.Start();
+
     }
 
 
@@ -51,11 +52,41 @@ public partial class Form1 : Form
         //
 
         //Critical region
-        var newBalance = balance + amount;
-        Thread.Sleep(delay);
-        listBoxMsg.Invoke(() => listBoxMsg.Items.Add($"balance: {balance} -> {newBalance}"));
-        balance = newBalance;
+        lock (this)
+        {
+            var newBalance = balance + amount;
+            Thread.Sleep(delay);
+            listBoxMsg.Invoke(() => listBoxMsg.Items.Add($"balance: {balance} -> {newBalance}"));
+            balance = newBalance;
+        }
 
+        //Async / Await
 
+    }
+
+    //void -> Task
+    //int - Task<int>
+
+    private Task updateBalanceAsync(int amount, int delay)
+    {
+        var t = new Task(() =>
+        {
+            var newBalance = balance + amount;
+            Thread.Sleep(delay);
+            listBoxMsg.Invoke(() => listBoxMsg.Items.Add($"balance: {balance} -> {newBalance}"));
+            balance = newBalance;
+        });
+        t.Start();
+        return t;
+    }
+
+    private async void buttonAsyncAwait_Click(object sender, EventArgs e)
+    {
+        listBoxMsg.Items.Clear();
+        balance = 100;
+        var rnd = new Random();
+        await updateBalanceAsync(10, rnd.Next(1000));
+        await updateBalanceAsync(-50, rnd.Next(1000));
+        await updateBalanceAsync(20, rnd.Next(1000));
     }
 }
