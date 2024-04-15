@@ -66,6 +66,9 @@ Security
 
 		LDAP
 		OAuth 2.0
+		SSO
+
+		IM
 		
 	Authorize
 		Role
